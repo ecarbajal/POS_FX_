@@ -168,6 +168,18 @@ public class MainController implements Initializable {
             String queryUpdate = "UPDATE permisos_globales SET permitido = '"+((rdCambioCosto.isSelected())? "1": "0")+
                     "' WHERE cve_valor = 'INV_camb_costo_usu'";
             System.out.println(m.executeSQL(queryUpdate));
+        }else if(e.getSource() == rdCambioPrecios){
+            String queryUpdate = "UPDATE permisos_globales SET permitido = '"+((rdCambioPrecios.isSelected())? "1": "0")+
+                    "' WHERE cve_valor = 'INV_camb_prec_usu'";
+            System.out.println(m.executeSQL(queryUpdate));
+        }else if(e.getSource() == rdCambioStatus){
+            String queryUpdate = "UPDATE permisos_globales SET permitido = '"+((rdCambioStatus.isSelected())? "1": "0")+
+                    "' WHERE cve_valor = 'INV_camb_status_prod_usu'";
+            System.out.println(m.executeSQL(queryUpdate));
+        }else if(e.getSource() == rdCargaMasiva){
+            String queryUpdate = "UPDATE permisos_globales SET permitido = '"+((rdCargaMasiva.isSelected())? "1": "0")+
+                    "' WHERE cve_valor = 'INV_carga_masiva_usu'";
+            System.out.println(m.executeSQL(queryUpdate));
         }
     }
  
