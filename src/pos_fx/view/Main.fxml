@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="582.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pos_fx.Controller.MainController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <TabPane layoutY="46.0" prefHeight="548.0" prefWidth="774.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="POS">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="507.0" prefWidth="774.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="20.0" disable="true" fill="#90caf98f" height="127.0" layoutX="570.0" layoutY="387.0" stroke="#b4b5b4" strokeType="INSIDE" width="193.0" />
+                        <ImageView fitHeight="97.0" fitWidth="99.0" layoutX="14.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lblFecha" alignment="CENTER_RIGHT" contentDisplay="CENTER" disable="true" focusTraversable="false" layoutX="582.0" layoutY="14.0" prefHeight="17.0" prefWidth="176.0" text="Viernes 27 de abril de 2018" />
+                        <TableView layoutX="12.0" layoutY="72.0" prefHeight="309.0" prefWidth="750.0">
+                          <columns>
+                            <TableColumn prefWidth="94.0" text="Código" />
+                            <TableColumn prefWidth="389.0" text="Descripción" />
+                              <TableColumn prefWidth="85.0" text="Cantidad" />
+                              <TableColumn prefWidth="90.0" text="P. unitario" />
+                              <TableColumn prefWidth="90.0" text="Total" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="131.0" layoutY="441.0" text="Total día:" />
+                        <Label layoutX="591.0" layoutY="394.0" text="I.V.A." />
+                        <Label layoutX="664.0" layoutY="394.0" prefHeight="17.0" prefWidth="51.0" text="Sub total" />
+                        <Label layoutX="583.0" layoutY="448.0" text="Total" />
+                        <TextField alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="570.0" layoutY="409.0" prefHeight="25.0" prefWidth="69.0" text="0.0" AnchorPane.rightAnchor="116.0" />
+                        <TextField alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="693.0" layoutY="409.0" prefHeight="25.0" prefWidth="89.0" text="0.0" AnchorPane.rightAnchor="22.0" />
+                        <TextField alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="613.0" layoutY="437.0" prefHeight="37.0" prefWidth="139.0" text="0.0" AnchorPane.rightAnchor="22.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextField>
+                        <TextField editable="false" focusTraversable="false" layoutX="196.0" layoutY="436.0" prefHeight="25.0" prefWidth="118.0" text="0.0" />
+                        <Button layoutX="127.0" layoutY="474.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Re impresión" />
+                        <MenuButton layoutX="222.0" layoutY="474.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Corte">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Parcial" />
+                            <MenuItem mnemonicParsing="false" text="Final" />
+                          </items>
+                        </MenuButton>
+                        <Label layoutX="14.0" layoutY="14.0" text="Vendedor" />
+                        <TextField layoutX="74.0" layoutY="10.0" prefHeight="25.0" prefWidth="97.0" />
+                        <TextField fx:id="txtCodigo" layoutX="12.0" layoutY="41.0" prefHeight="25.0" prefWidth="94.0" />
+                        <TextField editable="false" focusTraversable="false" layoutX="111.0" layoutY="41.0" prefHeight="25.0" prefWidth="365.0" />
+                        <TextField focusTraversable="false" layoutX="489.0" layoutY="41.0" prefHeight="25.0" prefWidth="86.0" />
+                        <TextField editable="false" focusTraversable="false" layoutX="581.0" layoutY="41.0" prefHeight="25.0" prefWidth="86.0" />
+                        <TextField fx:id="txtX" editable="false" focusTraversable="false" layoutX="674.0" layoutY="41.0" prefHeight="25.0" prefWidth="86.0" />
+                        <TextField editable="false" focusTraversable="false" layoutX="196.0" layoutY="397.0" prefHeight="25.0" prefWidth="117.0" text="0.0" />
+                        <Label layoutX="131.0" layoutY="402.0" text="Total caja:" />
+                        <Button layoutX="669.0" layoutY="480.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="82.0" style="-fx-background-color: A5D6A7;" text="Completar" textAlignment="CENTER" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true" />
+                        <Button cancelButton="true" layoutX="582.0" layoutY="480.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="83.0" style="-fx-background-color: EF9A9A;" text="Cancelar" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+                        <Label layoutX="178.0" layoutY="14.0" prefHeight="17.0" prefWidth="425.0" text="Ingrese clave de vendedor" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Inventarios">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutX="12.0" layoutY="126.0" prefHeight="384.0" prefWidth="750.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Código" />
+                            <TableColumn prefWidth="322.0" text="Descripción" />
+                              <TableColumn prefWidth="78.0" text="Existencias" />
+                              <TableColumn prefWidth="55.0" text="Costo" />
+                              <TableColumn prefWidth="62.0" text="Precio 1" />
+                              <TableColumn prefWidth="58.0" text="Precio 2" />
+                              <TableColumn prefWidth="53.0" text="Precio 3" />
+                              <TableColumn prefWidth="47.0" text="Activo" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="14.0" text="Código" />
+                        <Label layoutX="132.0" layoutY="15.0" text="Descripción" />
+                        <Label layoutX="478.0" layoutY="15.0" text="Existencia" />
+                        <Label layoutX="14.0" layoutY="68.0" text="Costo" />
+                        <Label layoutX="94.0" layoutY="74.0" text="Precio 1" />
+                        <Label layoutX="178.0" layoutY="74.0" text="Precio 2" />
+                        <Label layoutX="255.0" layoutY="74.0" text="Precio 3" />
+                        <TextField layoutX="14.0" layoutY="36.0" prefHeight="25.0" prefWidth="110.0" />
+                        <TextField layoutX="133.0" layoutY="36.0" prefHeight="25.0" prefWidth="337.0" />
+                        <TextField layoutX="478.0" layoutY="37.0" prefHeight="25.0" prefWidth="69.0" />
+                        <TextField layoutX="14.0" layoutY="90.0" prefHeight="25.0" prefWidth="69.0" />
+                        <TextField layoutX="94.0" layoutY="91.0" prefHeight="25.0" prefWidth="69.0" />
+                        <TextField layoutX="175.0" layoutY="91.0" prefHeight="25.0" prefWidth="69.0" />
+                        <TextField layoutX="255.0" layoutY="91.0" prefHeight="25.0" prefWidth="69.0" />
+                        <CheckBox layoutX="342.0" layoutY="95.0" mnemonicParsing="false" text="¿Activo?" />
+                        <Button layoutX="594.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #90CAF9;" text="Guardar/Act." />
+                        <Button layoutX="594.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" style="-fx-background-color: #90CAF9;" text="Limpiar" />
+                        <Button layoutX="594.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" style="-fx-background-color: #90CAF9;" text="Carga másiva" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Reportes">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="531.0" layoutY="47.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #90CAF9;" text="Exportar ventas a Excel" />
+                        <Button layoutX="531.0" layoutY="78.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #90CAF9;" text="Exportar ventas a PDF" />
+                        <Button layoutX="531.0" layoutY="184.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #90CAF9;" text="Exportar existencias a PDF" />
+                        <Button layoutX="531.0" layoutY="151.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #90CAF9;" text="Exportar existencias a Excel" />
+                        <Label layoutX="14.0" layoutY="20.0" text="Ventas" />
+                        <Label layoutX="21.0" layoutY="132.0" text="Existencias" />
+                        <DatePicker layoutX="121.0" layoutY="47.0" />
+                        <DatePicker layoutX="320.0" layoutY="47.0" />
+                        <Label layoutX="306.0" layoutY="51.0" text="a" />
+                        <Separator layoutX="14.0" layoutY="128.0" prefHeight="0.0" prefWidth="744.0" />
+                        <Label layoutX="270.0" layoutY="168.0" text="a" />
+                        <DatePicker layoutX="340.0" layoutY="168.0" />
+                        <DatePicker layoutX="14.0" layoutY="164.0" />
+                        <Separator layoutX="14.0" layoutY="229.0" prefHeight="0.0" prefWidth="744.0" />
+                        <RadioButton layoutX="14.0" layoutY="51.0" mnemonicParsing="false" text="Rango" />
+                        <RadioButton layoutX="13.0" layoutY="82.0" mnemonicParsing="false" text="Vendedor" />
+                        <ComboBox layoutX="122.0" layoutY="78.0" prefHeight="25.0" prefWidth="371.0" visibleRowCount="100" />
+                        <Separator layoutX="13.0" layoutY="336.0" prefHeight="0.0" prefWidth="744.0" />
+                        <Label layoutX="21.0" layoutY="281.0" text="Vendedores" />
+                        <Button layoutX="530.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #90CAF9;" text="Exportar lista vendedores a Excel" />
+                        <Button layoutX="530.0" layoutY="291.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #90CAF9;" text="Exportar lista vendedores a PDF" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+          <Tab fx:id="tabAdmon" onSelectionChanged="#loadInformation" text="Administración">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="23.0" text="General" />
+                        <Label layoutX="14.0" layoutY="56.0" text="Empresa:" />
+                        <Label layoutX="12.0" layoutY="90.0" text="Dirección:" />
+                        <TextField fx:id="txtNombreEmpresa" layoutX="67.0" layoutY="52.0" prefHeight="25.0" prefWidth="309.0" />
+                        <TextField fx:id="txtDireccion" layoutX="67.0" layoutY="86.0" prefHeight="25.0" prefWidth="168.0" />
+                        <TextField fx:id="txtCp" layoutX="260.0" layoutY="86.0" prefHeight="25.0" prefWidth="118.0" />
+                        <Label layoutX="236.0" layoutY="90.0" text="C.P." />
+                        <TextField fx:id="txtRfc" layoutX="67.0" layoutY="120.0" prefHeight="25.0" prefWidth="132.0" text="XEX010101000" />
+                        <Label layoutX="12.0" layoutY="124.0" text="R.F.C." />
+                        <Separator layoutX="14.0" layoutY="163.0" prefHeight="3.0" prefWidth="741.0" />
+                        <Label layoutX="414.0" layoutY="23.0" text="Fiscal" />
+                        <Label layoutX="416.0" layoutY="54.0" text="I.V.A." />
+                        <TextField fx:id="txtIva" layoutX="469.0" layoutY="50.0" prefHeight="25.0" prefWidth="118.0" />
+                        <Label layoutX="15.0" layoutY="176.0" text="POS" />
+                        <RadioButton fx:id="rdCancelarSCve" layoutX="14.0" layoutY="200.0" mnemonicParsing="false" onAction="#activaPermiso" text="Cancelar venta sin clave" />
+                        <RadioButton fx:id="rdVerTotales" layoutX="14.0" layoutY="230.0" mnemonicParsing="false" onAction="#activaPermiso" text="Ver totales en pantalla" />
+                        <RadioButton fx:id="rdReimpresion" layoutX="14.0" layoutY="261.0" mnemonicParsing="false" onAction="#activaPermiso" text="Permitir re impresión" />
+                        <RadioButton fx:id="rdUsaExistVta" layoutX="14.0" layoutY="292.0" mnemonicParsing="false" onAction="#activaPermiso" text="Tomar en cuenta existencia para venta" />
+                        <Separator layoutX="384.0" layoutY="24.0" orientation="VERTICAL" prefHeight="125.0" prefWidth="3.0" />
+                        <Separator layoutX="384.0" layoutY="185.0" orientation="VERTICAL" prefHeight="125.0" prefWidth="3.0" />
+                        <RadioButton fx:id="rdCargaMasiva" layoutX="416.0" layoutY="297.0" mnemonicParsing="false" onAction="#activaPermiso" text="Permitir carga másiva a usuarios" />
+                        <RadioButton fx:id="rdCambioStatus" layoutX="416.0" layoutY="266.0" mnemonicParsing="false" onAction="#activaPermiso" text="Permitir cambiar estatus a usuarios" />
+                        <RadioButton fx:id="rdCambioPrecios" layoutX="416.0" layoutY="235.0" mnemonicParsing="false" onAction="#activaPermiso" text="Permitir cambiar precios a usuarios" />
+                        <RadioButton fx:id="rdCambioCosto" layoutX="416.0" layoutY="205.0" mnemonicParsing="false" onAction="#activaPermiso" text="Permitir cambiar costo a usuarios" />
+                        <Label layoutX="417.0" layoutY="181.0" text="Inventarios" />
+                        <Button fx:id="btnAdmUsuarios" layoutX="12.0" layoutY="367.0" mnemonicParsing="false" onAction="#loadWindowAdmUsers" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: #90CAF9;" text="Usuarios" />
+                        <Separator layoutX="6.0" layoutY="329.0" prefHeight="3.0" prefWidth="741.0" />
+                        <Button layoutX="14.0" layoutY="404.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #90CAF9;" text="Vendedores" />
+                        <Separator layoutX="381.0" layoutY="347.0" orientation="VERTICAL" prefHeight="125.0" prefWidth="3.0" />
+                        <Label layoutX="12.0" layoutY="338.0" text="Administración" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Button layoutX="663.0" layoutY="14.0" mnemonicParsing="false" onAction="#cambiarUsuario" style="-fx-background-color: #90CAF9;" text="Cambiar usuario" />
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="447.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/JORGE/Desktop/POS/POS_FX/src/pos_fx/sources/drawable/usuario.png" />
+         </image></ImageView>
+      <Label fx:id="txtUsuario" focusTraversable="false" layoutX="478.0" layoutY="26.0" prefHeight="17.0" prefWidth="179.0" text="ecarbajal" />
+      <Label fx:id="txtNombreUsuario" focusTraversable="false" layoutX="478.0" layoutY="11.0" prefHeight="17.0" prefWidth="179.0" text="Eduardo Carbajal Reyes" />
+    </children>
+</AnchorPane>
