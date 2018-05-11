@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pos_fx.Controller.AdmVendedoresController">
+   <children>
+      <Label layoutX="14.0" layoutY="17.0" text="Administración de vendedores" />
+      <TableView fx:id="tblUsers" editable="true" focusTraversable="false" layoutX="14.0" layoutY="44.0" prefHeight="259.0" prefWidth="572.0">
+        <columns>
+          <TableColumn fx:id="clId" prefWidth="41.0" text="id" visible="false" />
+          <TableColumn fx:id="clCveAcceso" prefWidth="77.0" text="Clave " />
+            <TableColumn fx:id="clNombre" prefWidth="422.0" text="Nombre" />
+            <TableColumn fx:id="clActivo" prefWidth="72.0" text="¿Activo?" />
+        </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="313.0" text="Agregar / Modificar" />
+      <Label layoutX="14.0" layoutY="340.0" text="Identificador" />
+      <Label layoutX="14.0" layoutY="366.0" text="Clave" />
+      <Label layoutX="14.0" layoutY="394.0" text="Nombre" />
+      <TextField fx:id="txtId" editable="false" layoutX="92.0" layoutY="336.0" prefHeight="25.0" prefWidth="44.0" AnchorPane.bottomAnchor="142.0" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="464.0" AnchorPane.topAnchor="336.0" />
+      <TextField fx:id="txtCveAcceso" layoutX="92.0" layoutY="363.0" />
+      <TextField fx:id="txtNombre" layoutX="92.0" layoutY="390.0" prefHeight="25.0" prefWidth="282.0" />
+      <Button fx:id="btnAceptar" layoutX="397.0" layoutY="432.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="27.0" prefWidth="171.0" style="-fx-background-color: #90CAF9; -fx-border-color: #2196F3;" text="Guardar cambios" />
+      <Button fx:id="btnNuevoUsuario" layoutX="397.0" layoutY="389.0" mnemonicParsing="false" onAction="#agregarUsuario" prefHeight="27.0" prefWidth="171.0" style="-fx-background-color: #90CAF9; -fx-border-color: #2196F3;" text="Guardar nuevo vendedor" />
+      <CheckBox fx:id="chkActivo" layoutX="397.0" layoutY="332.0" mnemonicParsing="false" text="Usuario activo" />
+      <Button fx:id="btnLimpiar" layoutX="16.0" layoutY="432.0" mnemonicParsing="false" onAction="#cleanForm" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: #90CAF9; -fx-border-color: #2196F3;" text="Limpiar formulario" />
+      <Button fx:id="btnEliminarVendedor" layoutX="156.0" layoutY="433.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: EF9A9A; -fx-border-color: f44336;" text="Eliminar vendedor" />
+   </children>
+</AnchorPane>

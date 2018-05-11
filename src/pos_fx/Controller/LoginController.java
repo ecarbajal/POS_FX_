@@ -101,6 +101,7 @@ public class LoginController implements Initializable {
                         mc.setUsuario("Usuario general");
                         mc.setNombreUsuario(username);
                         mc.instance(stage);
+                        mc.allowView();
                         vtnLogin.close();
                     }
                        

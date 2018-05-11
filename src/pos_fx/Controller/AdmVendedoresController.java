@@ -19,15 +19,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.StringConverter;
 import pos_fx.Entities.Rol;
-import pos_fx.Entities.Usuario;
+import pos_fx.Entities.Vendedor;
 import pos_fx.Generic.Components;
 import pos_fx.model.Model;
 
@@ -36,77 +34,54 @@ import pos_fx.model.Model;
  *
  * @author Eduardo Carbajal Reyes
  */
-public class AdmUsuariosController implements Initializable {
+public class AdmVendedoresController implements Initializable {
     final Model m = new Model();
-    private final ObservableList<Usuario> usersData = FXCollections.observableArrayList();
+    private final ObservableList<Vendedor> usersData = FXCollections.observableArrayList();
     private final ObservableList<Rol> RoleData = FXCollections.observableArrayList();
 
-    @FXML private TableView<Usuario> tblUsers;
-    @FXML private TableColumn<Usuario, Integer> clId;
-    @FXML private TableColumn<Usuario, String> clCveAcceso;
-    @FXML private TableColumn<Usuario, String> clNombre;
-    @FXML private TableColumn<Usuario, String> clContrasena;
-    @FXML private TableColumn<Usuario, Integer> clRol;
-    @FXML private TableColumn<Usuario, Integer> clActivo;
+    @FXML private TableView<Vendedor> tblUsers;
+    @FXML private TableColumn<Vendedor, Integer> clId;
+    @FXML private TableColumn<Vendedor, String> clCveAcceso;
+    @FXML private TableColumn<Vendedor, String> clNombre;
+    @FXML private TableColumn<Vendedor, Integer> clActivo;
     
-    @FXML private ComboBox<Rol> cmbRoles;
+
     @FXML private TextField txtId;
     @FXML private TextField txtCveAcceso;
     @FXML private TextField txtNombre;
-    @FXML private TextField txtContrasena;
     @FXML private CheckBox chkActivo;
     
     @FXML private Button btnAceptar;
     @FXML private Button btnNuevoUsuario;
-    @FXML private Button btnEliminarUsuario;
+    @FXML private Button btnEliminarVendedor;
     
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        clId.setCellValueFactory(new PropertyValueFactory<>("id_usuario"));
-        clCveAcceso.setCellValueFactory(new PropertyValueFactory<>("cve_usuario"));
-        clNombre.setCellValueFactory(new PropertyValueFactory<>("nombre_usuario"));
-        clContrasena.setCellValueFactory(new PropertyValueFactory<>("psw_usuario"));
-        clRol.setCellValueFactory(new PropertyValueFactory<>("rol"));
+        clId.setCellValueFactory(new PropertyValueFactory<>("id_vendedor"));
+        clCveAcceso.setCellValueFactory(new PropertyValueFactory<>("cve_vendedor"));
+        clNombre.setCellValueFactory(new PropertyValueFactory<>("nombre_vendedor"));
         clActivo.setCellValueFactory(new PropertyValueFactory<>("activo"));
         
         tblUsers.setItems(usersData);
         cargarTablaUsuarios();
         
         btnAceptar.setDisable(true);
-        btnNuevoUsuario.setDisable(false);
-        btnEliminarUsuario.setDisable(true);
-        
-        cmbRoles.setItems(RoleData);
-        cmbRoles.setConverter(new StringConverter<Rol>() {
-            @Override
-            public String toString(Rol o) {
-                return o.getRol().get();
-            }
+        btnEliminarVendedor.setDisable(true);
 
-            @Override
-            public Rol fromString(String string) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
-        
-        cargarComboRoles();
         
         tblUsers.setRowFactory(tv -> {
-            TableRow<Usuario> row = new TableRow<>();
+            TableRow<Vendedor> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    Usuario usuario = row.getItem();
-                    txtId.setText(usuario.getId_usuario() + "");
-                    txtCveAcceso.setText(usuario.getCve_usuario());
-                    txtNombre.setText(usuario.getNombre_usuario());
-                    txtContrasena.setText(usuario.getPsw_usuario());
-                    chkActivo.setSelected(usuario.getActivo() == 1);
-                    cmbRoles.getSelectionModel().select(usuario.getRol());
+                    Vendedor vendedor = row.getItem();
+                    txtId.setText(vendedor.getId_vendedor() + "");
+                    txtCveAcceso.setText(vendedor.getCve_vendedor());
+                    txtNombre.setText(vendedor.getNombre_vendedor());
+                    chkActivo.setSelected(vendedor.getActivo() == 1);
                     btnAceptar.setDisable(false);
                     btnNuevoUsuario.setDisable(true);
-                    btnEliminarUsuario.setDisable(false);
-                    
+                    btnEliminarVendedor.setDisable(false);
                 }
             });
             return row;
@@ -115,18 +90,16 @@ public class AdmUsuariosController implements Initializable {
 
     private void cargarTablaUsuarios() {
         try {
-            ResultSet cdrUsers = m.getQueryResults("select * from usuarios;");
+            ResultSet cdrUsers = m.getQueryResults("select * from vendedores;");
             while(cdrUsers.next()){
-                usersData.add(new Usuario(
+                usersData.add(new Vendedor(
                         cdrUsers.getInt(1), 
                         cdrUsers.getString(2), 
                         cdrUsers.getString(3), 
-                        cdrUsers.getString(4), 
-                        cdrUsers.getInt(5), 
-                        cdrUsers.getInt(6)));
+                        cdrUsers.getInt(4)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AdmUsuariosController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdmVendedoresController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -141,7 +114,7 @@ public class AdmUsuariosController implements Initializable {
                         cdrRole.getString(3)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AdmUsuariosController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdmVendedoresController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -150,26 +123,23 @@ public class AdmUsuariosController implements Initializable {
         int activo = chkActivo.isSelected() ? 1 : 0; 
         String cveAcceso = txtCveAcceso.getText().trim();
         String nombre = txtNombre.getText().trim();
-        String contrasena = txtContrasena.getText().trim();
-        int rol = cmbRoles.getSelectionModel().getSelectedItem().getCve_rol().getValue();
         
-        if(m.validateExistUser(cveAcceso)){
-            Components.Alert(Alert.AlertType.ERROR, "Registro duplicado", "El usuario "+cveAcceso+" ya existe.", null);
-        }else if((activo != 1 || activo != 0) && !cveAcceso.equals("") && !nombre.equals("") && !contrasena.equals("") && rol != 0){
-            String query = "INSERT INTO usuarios values "
+        if(m.validateExistVendedor(cveAcceso)){
+            Components.Alert(Alert.AlertType.ERROR, "Registro duplicado", "El vendedor "+cveAcceso+" ya existe.", null);
+        }else if((activo != 1 || activo != 0) && !cveAcceso.equals("") && !nombre.equals("")){
+            String query = "INSERT INTO vendedores VALUES "
                     + "(null,'" + cveAcceso + "',"
                     + "'" + nombre + "',"
-                    + "'" + contrasena + "',"
-                    + "" + rol + ","
                     + activo + ");";
+            //System.out.println(query);
             
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Guardar usuario");
+            alert.setTitle("Guardar vendedor");
             alert.setHeaderText(null);
             alert.setContentText(m.executeSQL(query));
             cleanForm();
             alert.show();
-            
+
             tblUsers.getItems().clear();
             cargarTablaUsuarios();
             tblUsers.setItems(usersData);
@@ -187,36 +157,36 @@ public class AdmUsuariosController implements Initializable {
         txtId.setText("");
         txtCveAcceso.setText("");
         txtNombre.setText("");
-        txtContrasena.setText("");
-        cmbRoles.getSelectionModel().select(0);
         chkActivo.setSelected(false);
-        
-        btnAceptar.setDisable(true);
         btnNuevoUsuario.setDisable(false);
-        btnEliminarUsuario.setDisable(true);
+        btnAceptar.setDisable(true);
+        btnEliminarVendedor.setDisable(true);
     }
     
     @FXML public void updateUser(){
         String id = txtId.getText().trim();
         String nombre = txtNombre.getText().trim();
-        String usuario = txtCveAcceso.getText().trim();
-        String psw = txtContrasena.getText().trim();
-        String cmbRol = cmbRoles.getSelectionModel().getSelectedItem().getCve_rol().getValue().toString();
+        String vendedor = txtCveAcceso.getText().trim();
         String activo = chkActivo.isSelected() ? "1" : "0";
         
-        if(!id.equals("") && !nombre.equals("") && !psw.equals("") && !cmbRol.equals("") && !cmbRol.equals("0")){
-            String query = "update usuarios set "
-                    + "nombre_usuario='"+nombre+"' , "
-                    + "cve_usuario = '"+usuario+"' , "
-                    + "psw_usuario = '"+psw+"' , "
-                    + "rol = '"+cmbRol+"' ,"
+        if(!id.equals("") && !nombre.equals("")){
+            String query = "update vendedores set "
+                    + "nombre='"+nombre+"' , "
+                    + "clave = '"+vendedor+"' , "
                     + "activo = '"+activo+"' "
-                    + "where id_usuario='"+id+"';";
+                    + "where id_vendedor='"+id+"';";
             //System.out.println(query);
             
             String res = m.executeSQL(query);
             if (res.contains("correctamente")) {
+                btnAceptar.setDisable(true);
+                btnNuevoUsuario.setDisable(false);
+                btnEliminarVendedor.setDisable(true);
                 cleanForm();
+                tblUsers.getItems().clear();
+                 cargarTablaUsuarios();
+                 tblUsers.setItems(usersData);
+       
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Éxito");
@@ -225,9 +195,6 @@ public class AdmUsuariosController implements Initializable {
                 cleanForm();
                 alert.show();
                 
-                tblUsers.getItems().clear();
-                cargarTablaUsuarios();
-                tblUsers.setItems(usersData);
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("¡ERROR!");
@@ -247,7 +214,7 @@ public class AdmUsuariosController implements Initializable {
         
     }
     
-    @FXML public void delete(){
+     @FXML public void delete(){
         String id = txtId.getText();
         
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -258,16 +225,15 @@ public class AdmUsuariosController implements Initializable {
         
         
         if (alert.getResult() == ButtonType.OK) {
-            String query = "delete from usuarios where id_usuario="+id;
+            String query = "delete from vendedores where id_vendedor="+id;
             String answer = m.executeSQL(query);
             if(answer.contains("correctamente")){
                 int selectedUser = tblUsers.getSelectionModel().getSelectedIndex();
                 usersData.remove(selectedUser);
-                Components.Alert(Alert.AlertType.INFORMATION, "Información", answer, null);
-                cleanForm();
+                Components.Alert(Alert.AlertType.INFORMATION, answer, "Eliminación de vendedor correcta", null);
                 
             }else{
-                Components.Alert(Alert.AlertType.ERROR, "Información", answer , null);
+                Components.Alert(Alert.AlertType.ERROR, answer, "Eliminación de vendedor correcta", null);
             }
         } else {
             alert.close();

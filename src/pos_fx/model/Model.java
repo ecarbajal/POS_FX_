@@ -55,5 +55,59 @@ public class Model {
         }
         return result;
     }
+    
+    public boolean validateExistUser(String cveUsuario){
+        ResultSet rs = getQueryResults("select cve_usuario from usuarios where cve_usuario='"+cveUsuario+"'");
+        String cve = null;
+        boolean exist = false;
+        try {
+            while (rs.next()) {
+                cve = rs.getString("cve_usuario");
+            }
+            
+         exist = (!cve.equals("") && cve != null);   
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(NullPointerException npe){
+            exist = false;
+        }
+        return exist;
+    }
+    
+     public boolean validateExistVendedor(String cveUsuario){
+        ResultSet rs = getQueryResults("select clave from vendedores where clave='"+cveUsuario+"'");
+        String cve = null;
+        boolean exist = false;
+        try {
+            while (rs.next()) {
+                cve = rs.getString("clave");
+            }
+            
+         exist = (!cve.equals("") && cve != null);   
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(NullPointerException npe){
+            exist = false;
+        }
+        return exist;
+    }
+     
+      public String getSeller(String cveVendedor){
+        ResultSet rs = getQueryResults("select nombre from vendedores where clave='"+cveVendedor+"'");
+        String cve = null;
+        try {
+            while (rs.next()) {
+                cve = rs.getString("nombre");
+            }  
+        } catch (SQLException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(NullPointerException npe){
+        }
+        return cve;
+    }
+    
+    
 
 }

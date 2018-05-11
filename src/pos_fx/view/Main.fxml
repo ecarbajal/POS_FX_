@@ -14,20 +14,20 @@
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <TabPane layoutY="46.0" prefHeight="548.0" prefWidth="774.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="POS">
+          <Tab fx:id="tabPOS" text="POS">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="507.0" prefWidth="774.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="20.0" disable="true" fill="#90caf98f" height="127.0" layoutX="570.0" layoutY="387.0" stroke="#b4b5b4" strokeType="INSIDE" width="193.0" />
                         <ImageView fitHeight="97.0" fitWidth="99.0" layoutX="14.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true" />
                         <Label fx:id="lblFecha" alignment="CENTER_RIGHT" contentDisplay="CENTER" disable="true" focusTraversable="false" layoutX="582.0" layoutY="14.0" prefHeight="17.0" prefWidth="176.0" text="Viernes 27 de abril de 2018" />
-                        <TableView layoutX="12.0" layoutY="72.0" prefHeight="309.0" prefWidth="750.0">
+                        <TableView fx:id="tblProductosVenta" layoutX="12.0" layoutY="72.0" prefHeight="309.0" prefWidth="750.0">
                           <columns>
-                            <TableColumn prefWidth="94.0" text="Código" />
-                            <TableColumn prefWidth="389.0" text="Descripción" />
-                              <TableColumn prefWidth="85.0" text="Cantidad" />
-                              <TableColumn prefWidth="90.0" text="P. unitario" />
-                              <TableColumn prefWidth="90.0" text="Total" />
+                            <TableColumn fx:id="clCodigo" prefWidth="94.0" text="Código" />
+                            <TableColumn fx:id="clDescripcion" prefWidth="389.0" text="Descripción" />
+                              <TableColumn fx:id="clCantidad" prefWidth="85.0" text="Cantidad" />
+                              <TableColumn fx:id="clPrecioUnitario" prefWidth="90.0" text="P. unitario" />
+                              <TableColumn fx:id="clTotal" prefWidth="90.0" text="Total" />
                           </columns>
                         </TableView>
                         <Label layoutX="131.0" layoutY="441.0" text="Total día:" />
@@ -50,22 +50,23 @@
                           </items>
                         </MenuButton>
                         <Label layoutX="14.0" layoutY="14.0" text="Vendedor" />
-                        <TextField layoutX="74.0" layoutY="10.0" prefHeight="25.0" prefWidth="97.0" />
+                        <TextField fx:id="txtCveVendedor" layoutX="74.0" layoutY="10.0" prefHeight="25.0" prefWidth="97.0" />
                         <TextField fx:id="txtCodigo" layoutX="12.0" layoutY="41.0" prefHeight="25.0" prefWidth="94.0" />
-                        <TextField editable="false" focusTraversable="false" layoutX="111.0" layoutY="41.0" prefHeight="25.0" prefWidth="365.0" />
-                        <TextField focusTraversable="false" layoutX="489.0" layoutY="41.0" prefHeight="25.0" prefWidth="86.0" />
-                        <TextField editable="false" focusTraversable="false" layoutX="581.0" layoutY="41.0" prefHeight="25.0" prefWidth="86.0" />
-                        <TextField fx:id="txtX" editable="false" focusTraversable="false" layoutX="674.0" layoutY="41.0" prefHeight="25.0" prefWidth="86.0" />
+                        <TextField fx:id="txtDescripcionProducto" editable="false" focusTraversable="false" layoutX="111.0" layoutY="41.0" prefHeight="25.0" prefWidth="365.0" />
+                        <TextField fx:id="txtCantidad" editable="false" focusTraversable="false" layoutX="489.0" layoutY="41.0" prefHeight="25.0" prefWidth="86.0" />
+                        <TextField fx:id="txtPrecioUnitario" editable="false" focusTraversable="false" layoutX="581.0" layoutY="41.0" prefHeight="25.0" prefWidth="86.0" />
+                        <TextField fx:id="txtTotalPrroducto" editable="false" focusTraversable="false" layoutX="674.0" layoutY="41.0" prefHeight="25.0" prefWidth="86.0" />
                         <TextField editable="false" focusTraversable="false" layoutX="196.0" layoutY="397.0" prefHeight="25.0" prefWidth="117.0" text="0.0" />
                         <Label layoutX="131.0" layoutY="402.0" text="Total caja:" />
                         <Button layoutX="669.0" layoutY="480.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="82.0" style="-fx-background-color: A5D6A7;" text="Completar" textAlignment="CENTER" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true" />
                         <Button cancelButton="true" layoutX="582.0" layoutY="480.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="83.0" style="-fx-background-color: EF9A9A;" text="Cancelar" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
-                        <Label layoutX="178.0" layoutY="14.0" prefHeight="17.0" prefWidth="425.0" text="Ingrese clave de vendedor" />
+                        <Label fx:id="lblNombreVendedor" layoutX="215.0" layoutY="14.0" prefHeight="17.0" prefWidth="388.0" text="Ingrese clave de vendedor" />
+                        <Label fx:id="lblClaveVendedor" layoutX="182.0" layoutY="14.0" prefHeight="17.0" prefWidth="38.0" text="Clave" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Inventarios">
+            <Tab fx:id="tabInventarios" text="Inventarios">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -102,7 +103,7 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="Reportes">
+            <Tab fx:id="tabReportes" text="Reportes">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -130,7 +131,7 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-          <Tab fx:id="tabAdmon" onSelectionChanged="#loadInformation" text="Administración">
+          <Tab fx:id="tabAdministracion" onSelectionChanged="#loadInformation" text="Administración">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -161,7 +162,7 @@
                         <Label layoutX="417.0" layoutY="181.0" text="Inventarios" />
                         <Button fx:id="btnAdmUsuarios" layoutX="12.0" layoutY="367.0" mnemonicParsing="false" onAction="#loadWindowAdmUsers" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: #90CAF9;" text="Usuarios" />
                         <Separator layoutX="6.0" layoutY="329.0" prefHeight="3.0" prefWidth="741.0" />
-                        <Button layoutX="14.0" layoutY="404.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #90CAF9;" text="Vendedores" />
+                        <Button layoutX="14.0" layoutY="404.0" mnemonicParsing="false" onAction="#loadWindowAdmSellers" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #90CAF9;" text="Vendedores" />
                         <Separator layoutX="381.0" layoutY="347.0" orientation="VERTICAL" prefHeight="125.0" prefWidth="3.0" />
                         <Label layoutX="12.0" layoutY="338.0" text="Administración" />
                      </children></AnchorPane>
